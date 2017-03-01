@@ -1,6 +1,6 @@
 'use strict';
 
-let obj1 = {
+const obj1 = {
   field: 'Value',
   subObject: {
     arr: [7, 10, 2, 5],

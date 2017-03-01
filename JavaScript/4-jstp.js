@@ -1,11 +1,12 @@
 'use strict';
 
 function serialize(obj) {
+  const type = typeof(obj);
   if (obj === null) return 'null';
-  else if (typeof(obj) === 'string') return '\'' + obj + '\'';
-  else if (typeof(obj) === 'number') return obj + '';
-  else if (typeof(obj) === 'boolean') return obj.toString();
-  else if (typeof(obj) !== 'object') return obj + '';
+  else if (type === 'string') return '\'' + obj + '\'';
+  else if (type === 'number') return obj + '';
+  else if (type === 'boolean') return obj.toString();
+  else if (type !== 'object') return obj + '';
   else if (Array.isArray(obj)) {
     return '[' + obj + ']';
   } else {
@@ -19,7 +20,7 @@ function serialize(obj) {
   }
 }
 
-let obj1 = {
+const obj1 = {
   field: 'Value',
   subObject: {
     arr: [7, 10, 2, 5],
