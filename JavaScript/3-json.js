@@ -8,4 +8,6 @@ const obj1 = {
   }
 };
 
-console.log(JSON.stringify(obj1));
+const s = JSON.stringify(obj1);
+console.log(s);
+const obj2 = JSON.parse(s);
