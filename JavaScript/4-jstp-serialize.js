@@ -1,23 +1,26 @@
 'use strict';
 
 function serialize(obj) {
-  const type = typeof(obj);
-  if (obj === null) return 'null';
-  else if (type === 'string') return '\'' + obj + '\'';
-  else if (type === 'number') return obj + '';
-  else if (type === 'boolean') return obj.toString();
-  else if (type !== 'object') return obj + '';
-  else if (Array.isArray(obj)) {
-    return '[' + obj + ']';
-  } else {
-    let key, value, s = '{';
-    for (key in obj) {
-      value = obj[key];
-      if (s.length > 1) s += ',';
-      s += key + ':' + serialize(value);
+  let type = typeof(obj);
+  if (obj === null) type = 'null';
+  else if (Array.isArray(obj)) type = 'array';
+  const typeSwitch = {
+    null: () => null,
+    array: obj => '[' + obj + ']',
+    string: obj => '\'' + obj + '\'',
+    boolean: obj => obj.toString(),
+    number: obj => obj + '',
+    object: obj => {
+      let key, value, s = '{';
+      for (key in obj) {
+        value = obj[key];
+        if (s.length > 1) s += ', ';
+        s += key + ': ' + serialize(value);
+      }
+      return s + '}';
     }
-    return s + '}';
-  }
+  };
+  return (type in typeSwitch) ? typeSwitch[type](obj) : obj + '';
 }
 
 const obj1 = {
