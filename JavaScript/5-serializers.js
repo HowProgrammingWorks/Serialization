@@ -1,6 +1,14 @@
 'use strict';
 
-const serializers = {
+let serializers = null;
+
+const serialize = obj => {
+  const type = typeof obj;
+  const serializer = serializers[type];
+  return serializer(obj);
+};
+
+serializers = {
   string: s => '\'' + s + '\'',
   number: n => n + '',
   boolean: b => b.toString(),
@@ -8,9 +16,9 @@ const serializers = {
   object: o => {
     if (Array.isArray(o)) return '[' + o + ']';
     if (o === null) return 'null';
-    let key, value, s = '{';
-    for (key in o) {
-      value = o[key];
+    let s = '{';
+    for (const key in o) {
+      const value = o[key];
       if (s.length > 1) s += ',';
       s += key + ':' + serialize(value);
     }
@@ -18,11 +26,7 @@ const serializers = {
   }
 };
 
-function serialize(o) {
-  const type = typeof o;
-  const serializer = serializers[type];
-  return serializer(o);
-}
+// Usage
 
 const obj1 = {
   field: 'Value',
