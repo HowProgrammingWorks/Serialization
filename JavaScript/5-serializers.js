@@ -19,7 +19,7 @@ const serializers = {
 };
 
 function serialize(o) {
-  const type = typeof(o);
+  const type = typeof o;
   const serializer = serializers[type];
   return serializer(o);
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 function serialize(obj) {
-  const type = typeof(obj);
+  const type = typeof obj;
   if (obj === null) return 'null';
   else if (type === 'string') return '\'' + obj + '\'';
   else if (type === 'number') return obj + '';
