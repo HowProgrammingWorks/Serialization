@@ -3,12 +3,12 @@
 const serialize = obj => {
   const type = typeof obj;
   if (obj === null) return 'null';
-  else if (type === 'string') return '\'' + obj + '\'';
-  else if (type === 'number') return obj + '';
+  else if (type === 'string') return `'${obj}'`;
+  else if (type === 'number') return obj.toString();
   else if (type === 'boolean') return obj.toString();
-  else if (type !== 'object') return obj + '';
+  else if (type !== 'object') return obj.toString();
   else if (Array.isArray(obj)) {
-    return '[' + obj + ']';
+    return `[${obj}]`;
   } else {
     let s = '{';
     for (const key in obj) {

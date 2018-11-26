@@ -9,12 +9,12 @@ const serialize = obj => {
 };
 
 serializers = {
-  string: s => '\'' + s + '\'',
-  number: n => n + '',
+  string: s => `${s}`,
+  number: n => n.toString(),
   boolean: b => b.toString(),
   function: f => f.toString(),
   object: o => {
-    if (Array.isArray(o)) return '[' + o + ']';
+    if (Array.isArray(o)) return `[${o}]`;
     if (o === null) return 'null';
     let s = '{';
     for (const key in o) {

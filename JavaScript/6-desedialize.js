@@ -9,6 +9,6 @@ const jstp = `{
   fn: x => x * 2
 }`;
 
-const script = vm.createScript('(' + jstp + ')');
+const script = vm.createScript(`(${jstp})`);
 const data = script.runInThisContext();
 console.dir(data);
