@@ -1,6 +1,6 @@
 'use strict';
 
-const serialize = obj => {
+const serialize = (obj) => {
   const type = typeof obj;
   if (obj === null) return 'null';
   else if (type === 'string') return `'${obj}'`;
@@ -26,7 +26,7 @@ const obj1 = {
   field: 'Value',
   subObject: {
     arr: [7, 10, 2, 5],
-    fn: x => x / 2
+    fn: (x) => x / 2
   }
 };
 

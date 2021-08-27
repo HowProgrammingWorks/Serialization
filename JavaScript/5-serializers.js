@@ -2,18 +2,18 @@
 
 let serializers = null;
 
-const serialize = obj => {
+const serialize = (obj) => {
   const type = typeof obj;
   const serializer = serializers[type];
   return serializer(obj);
 };
 
 serializers = {
-  string: s => `${s}`,
-  number: n => n.toString(),
-  boolean: b => b.toString(),
-  function: f => f.toString(),
-  object: o => {
+  string: (s) => `${s}`,
+  number: (n) => n.toString(),
+  boolean: (b) => b.toString(),
+  function: (f) => f.toString(),
+  object: (o) => {
     if (Array.isArray(o)) return `[${o}]`;
     if (o === null) return 'null';
     let s = '{';
@@ -32,7 +32,7 @@ const obj1 = {
   field: 'Value',
   subObject: {
     arr: [7, 10, 2, 5],
-    fn: x => x / 2
+    fn: (x) => x / 2
   }
 };
 
