@@ -1,6 +1,6 @@
 'use strict';
 
-const v8 = require('v8');
+const v8 = require('node:v8');
 
 const persons = [
   { name: 'Marcus Aurelius', city: 'Rome', born: 121 },

@@ -1,6 +1,6 @@
 'use strict';
 
-const vm = require('vm');
+const vm = require('node:vm');
 
 const jstp = `{
   name: 'Marcus Aurelius',
