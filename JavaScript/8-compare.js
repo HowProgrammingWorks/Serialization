@@ -3,8 +3,7 @@
 const v8 = require('node:v8');
 const fs = require('node:fs');
 const jstp = require('metarhia-jstp');
-const BSON = require('bson');
-const bson = new BSON();
+const bson = require('bson');
 
 const persons = [
   { name: 'Marcus Aurelius', city: 'Rome', born: 121 },
